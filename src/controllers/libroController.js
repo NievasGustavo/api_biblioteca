@@ -52,6 +52,8 @@ exports.deleteLibro = async (req, res) => {
     const libroId = req.params.id;
 
     const libroEliminado = await Libro.findByIdAndRemove(libroId);
+    libroEliminado.id = libroEliminado._id;
+    delete libroEliminado._id;
 
     res.status(200).json(libroEliminado);
   } catch (error) {
