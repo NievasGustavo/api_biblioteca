@@ -6,14 +6,13 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
   useUnifiedTopology: true,
 });
 
-const LibroSchema = new mongoose.Schema(
-  {
-    titulo: String,
-    autor: String,
-  },
-  { collection: "libros" }
-);
+const UsuarioSchema = new mongoose.Schema(
+    {
+      username: String,
+      password: String,
+    }
+  )
+  
+  const Usuario = mongoose.model("Usuario", UsuarioSchema);
 
-const Libro = mongoose.model("Libro", LibroSchema);
-
-module.exports = Libro;
+  module.exports = Usuario;
